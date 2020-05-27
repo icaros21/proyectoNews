@@ -1,25 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import Sidebar from './components/sidebar';
+import 'bulma/css/bulma.css';
+import ListItems from './components/listItems';
+import store from './store';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Provider store={store}>
+        <div className="container is-fluid">
+          <div className="card">
+            <div className="card-content">    
+              <div className="columns">
+                <div className="column is-3">
+                  <section className="section has-background-light">
+                    <Sidebar />
+                  </section>
+                </div>
+                <div className="column is-9">
+                  <section className="section">
+                    <Switch>
+                      <Route exact path={'/'} component={ListItems}></Route>
+                    </Switch>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Provider>
+    </BrowserRouter>
   );
 }
 
