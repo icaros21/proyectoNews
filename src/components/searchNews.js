@@ -35,7 +35,7 @@ const SearchNews = () => {
             </div>
             <div className="field">
                 <div className="control">
-                    <button className="button is-danger is-active" onClick={e=>onClickSearchHandler()}>Buscar</button>
+                    <button className={!cargando ? "button is-danger is-active" : "button is-danger is-active is-loading"} onClick={e=>onClickSearchHandler()}>Buscar</button>
                 </div>
             </div>
         </Fragment>
